@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "_site"
 sys.path.insert(0, str(ROOT))
 
-from app import BEST_PRACTICES, COST_PRACTICES, FEATURES, app, get_updates
+from app import BEST_PRACTICES, COST_PRACTICES, FEATURES, POWER_TIPS, app, get_updates
 
 
 def build() -> None:
@@ -36,6 +36,7 @@ def build() -> None:
             "index.html",
             features=FEATURES,
             best_practices=BEST_PRACTICES,
+            power_tips=POWER_TIPS,
             cost_practices=COST_PRACTICES,
             updates_endpoint="updates.json",
         )

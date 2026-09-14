@@ -506,6 +506,69 @@ h1 {
 .practice-card h3 { margin: 30px 0 10px; font-size: 18px; }
 .practice-card p { color: var(--cp-text-muted); font-size: 13px; line-height: 1.65; }
 
+.tips-section {
+  position: relative;
+  padding: 112px clamp(32px, 7vw, 112px);
+  background:
+    radial-gradient(circle at 8% 85%, var(--cp-accent-soft), transparent 26%),
+    radial-gradient(circle at 92% 15%, var(--cp-highlight), transparent 24%),
+    var(--cp-bg);
+}
+.tips-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.tip-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 260px;
+  padding: 25px;
+  border: 1px solid var(--cp-border);
+  border-radius: 16px;
+  background: linear-gradient(145deg, var(--cp-surface), var(--cp-bg-elevated));
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  transform: perspective(900px) rotateY(var(--tilt-x)) rotateX(var(--tilt-y));
+  transition: transform .22s ease-out, border-color .2s;
+}
+.tip-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 50%), var(--cp-highlight), transparent 40%);
+  opacity: 0;
+  transition: opacity .25s;
+}
+.tip-card::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: var(--card-tone, var(--cp-link));
+}
+.tip-card:hover { border-color: var(--cp-border-strong); }
+.tip-card:hover::before { opacity: 1; }
+.tip-card > * { position: relative; z-index: 1; }
+.tip-label {
+  display: inline-flex;
+  padding: 6px 9px;
+  border-radius: 0.625rem;
+  background: var(--cp-surface-soft);
+  color: var(--card-tone, var(--cp-link));
+  font-family: Consolas, "Courier New", Courier, monospace;
+  font-size: 10px;
+  font-weight: 850;
+}
+.tip-card h3 { margin: 42px 0 10px; font-size: 19px; letter-spacing: -.02em; }
+.tip-card p { color: var(--cp-text-muted); font-size: 13px; line-height: 1.65; }
+.tip-card a { position: absolute; left: 25px; bottom: 22px; color: var(--cp-link); font-size: 11px; font-weight: 800; }
+.tip-card:first-child {
+  grid-column: span 2;
+  background:
+    radial-gradient(circle at 85% 10%, var(--cp-highlight), transparent 34%),
+    linear-gradient(145deg, var(--cp-surface), var(--cp-bg-elevated));
+}
+.tip-card:first-child h3 { font-size: 27px; }
+.tip-card:first-child p { max-width: 500px; }
+
 .cost-section {
   position: relative;
   padding: 112px clamp(32px, 7vw, 112px);
@@ -595,6 +658,9 @@ h1 {
 .cost-card h3 { margin: 48px 0 12px; font-size: 21px; letter-spacing: -.025em; }
 .cost-card p { color: var(--cp-text-muted); font-size: 13px; line-height: 1.65; }
 .cost-card a { position: absolute; left: 26px; bottom: 25px; color: var(--cp-link); font-size: 11px; font-weight: 800; }
+.cost-card:last-child { grid-column: 1 / -1; min-height: 230px; }
+.cost-card:last-child h3 { font-size: 27px; }
+.cost-card:last-child p { max-width: 780px; }
 .cost-note { max-width: 840px; margin: 28px 0 0; color: var(--cp-border); font-size: 11px; line-height: 1.6; }
 
 .updates-section {
@@ -694,6 +760,28 @@ footer a:hover { color: var(--cp-accent); }
 .feature-grid.revealed .feature-card:nth-child(6), .practice-grid.revealed .practice-card:nth-child(6) { animation-delay: .25s; }
 @keyframes card-arrive { from { opacity: 0; transform: translateY(22px) scale(.98); } }
 
+@media (max-width: 900px) {
+  .menu-button { display: block; }
+  .nav-links {
+    position: absolute;
+    display: none;
+    left: 16px;
+    right: 16px;
+    top: 62px;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0;
+    padding: 12px;
+    border: 1px solid var(--cp-border);
+    border-radius: 16px;
+    background: var(--cp-panel-strong);
+    box-shadow: var(--cp-shadow);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 13px; }
+  .nav-links > a:not(.nav-cta)::after { bottom: 4px; }
+}
+
 @media (max-width: 1020px) {
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
   .hero { grid-template-columns: 1fr; padding-top: 70px; }
@@ -704,6 +792,7 @@ footer a:hover { color: var(--cp-accent); }
   .practice-grid, .updates-grid { grid-template-columns: repeat(2, 1fr); }
   .cost-intro { grid-template-columns: 1fr; gap: 28px; }
   .cost-grid { grid-template-columns: repeat(2, 1fr); }
+  .tips-grid { grid-template-columns: repeat(2, 1fr); }
   .cta-section { grid-template-columns: auto 1fr; }
   .cta-section > .button { grid-column: 2; justify-self: start; }
 }
@@ -727,10 +816,13 @@ footer a:hover { color: var(--cp-accent); }
   .hero-visual { min-height: 360px; }
   .hero-metrics { max-width: none; }
   .code-window { inset: 48px 10px 38px 20px; }
-  .section, .updates-section, .workflow-section, .cost-section { padding: 76px 22px; }
+  .section, .updates-section, .workflow-section, .cost-section, .tips-section { padding: 76px 22px; }
   .section-heading { align-items: start; flex-direction: column; gap: 18px; }
   .feature-grid, .practice-grid, .updates-grid { grid-template-columns: 1fr; }
   .cost-grid { grid-template-columns: 1fr; }
+  .tips-grid { grid-template-columns: 1fr; }
+  .tip-card:first-child { grid-column: auto; }
+  .tip-card:first-child h3 { font-size: 21px; }
   .cost-intro h2 { font-size: 40px; }
   .feature-card:nth-child(1), .feature-card:nth-child(6), .featured-update { grid-column: auto; }
   .feature-card:nth-child(1) h3, .feature-card:nth-child(6) h3, .featured-update h3 { font-size: 21px; }

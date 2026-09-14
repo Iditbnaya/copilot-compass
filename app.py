@@ -122,6 +122,57 @@ BEST_PRACTICES = (
     },
 )
 
+POWER_TIPS = (
+    {
+        "label": "Library",
+        "title": "Explore Awesome GitHub Copilot",
+        "text": "Browse community-created agents, instructions, skills, hooks, workflows, and plugins. Inspect each customization before installing it.",
+        "url": "https://awesome-copilot.github.com/",
+    },
+    {
+        "label": "@file",
+        "title": "Point to the exact context",
+        "text": "Mention the relevant file with @ instead of making Copilot search the whole repository. Add only the context needed for the task.",
+        "url": "https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli",
+    },
+    {
+        "label": "Prompt",
+        "title": "Define the finish line",
+        "text": "State the goal, constraints, required output, and validation criteria. Clear acceptance conditions reduce unnecessary iterations.",
+        "url": "https://docs.github.com/en/copilot/get-started/best-practices",
+    },
+    {
+        "label": "/skills",
+        "title": "Reuse skills for repeatable work",
+        "text": "Use focused skills for recurring workflows so Copilot receives proven instructions and supporting resources only when needed.",
+        "url": "https://awesome-copilot.github.com/skills",
+    },
+    {
+        "label": "/agent",
+        "title": "Choose a specialist agent",
+        "text": "Use research, review, exploration, or task-focused agents when specialist context will produce a better result than one general conversation.",
+        "url": "https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli",
+    },
+    {
+        "label": "/ask",
+        "title": "Keep side questions out of context",
+        "text": "Use /ask for a quick side question that should not become part of the main conversation history.",
+        "url": "https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli",
+    },
+    {
+        "label": "/diff",
+        "title": "Inspect changes before accepting",
+        "text": "Review the diff, run the smallest relevant tests, and use code or security review for changes where mistakes carry more risk.",
+        "url": "https://docs.github.com/en/copilot/responsible-use/copilot-code-review",
+    },
+    {
+        "label": "Trust",
+        "title": "Grant only needed permissions",
+        "text": "Start Copilot in trusted directories and approve tools deliberately. Avoid broad permissions for destructive commands or unknown code.",
+        "url": "https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli",
+    },
+)
+
 COST_PRACTICES = (
     {
         "number": "01",
@@ -153,17 +204,24 @@ COST_PRACTICES = (
     },
     {
         "number": "05",
-        "title": "Set budgets before overages",
-        "text": "Create enterprise, organization, cost-center, and user budgets so extra usage cannot become an unexpected bill.",
-        "saving": "Predictable spend",
-        "url": "https://docs.github.com/en/copilot/concepts/billing/budgets-for-usage-based-billing",
+        "title": "Compact long CLI sessions",
+        "text": "Use /compact when a valuable Copilot CLI session becomes long. It summarizes the conversation so you can continue with less context.",
+        "saving": "Smaller context",
+        "url": "https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli",
     },
     {
         "number": "06",
-        "title": "Review usage and licenses monthly",
-        "text": "Track usage by user and feature, investigate unusual consumption, and reassign seats that are inactive or delivering little value.",
-        "saving": "Remove waste",
-        "url": "https://docs.github.com/en/copilot/how-tos/manage-and-track-spending/manage-company-spending",
+        "title": "Research, plan, then implement",
+        "text": "Use /research to gather evidence and /plan to agree on the approach before coding. Clear decisions reduce failed attempts and expensive rework.",
+        "saving": "Avoid rework",
+        "url": "https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli",
+    },
+    {
+        "number": "07",
+        "title": "Keep instructions specific and grounded",
+        "text": "Make .github/copilot-instructions.md describe the real stack, layout, commands, and conventions. Remove vague or outdated guidance that causes repeated exploration.",
+        "saving": "Better first pass",
+        "url": "https://docs.github.com/en/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot",
     },
 )
 
@@ -287,6 +345,7 @@ def index():
         "index.html",
         features=FEATURES,
         best_practices=BEST_PRACTICES,
+        power_tips=POWER_TIPS,
         cost_practices=COST_PRACTICES,
         updates_endpoint="/api/updates",
     )

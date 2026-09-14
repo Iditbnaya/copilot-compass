@@ -43,6 +43,7 @@
     <nav class="nav-links" aria-label="Main navigation">
       <a href="#features" data-nav-section="features">Features</a>
       <a href="#practices" data-nav-section="practices">Best practices</a>
+      <a href="#tips" data-nav-section="tips">Power tips</a>
       <a href="#costs" data-nav-section="costs">Save money</a>
       <a href="#updates" data-nav-section="updates">Updates</a>
       <a class="nav-cta" href="https://docs.github.com/en/copilot" target="_blank" rel="noreferrer">Official docs <span aria-hidden="true">↗</span></a>
@@ -199,12 +200,33 @@
       </div>
     </section>
 
+    <section class="tips-section" id="tips">
+      <div class="section-index" aria-hidden="true">03 / POWER TIPS</div>
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">Get better results, faster</p>
+          <h2>Small habits.<br>Much better Copilot.</h2>
+        </div>
+        <p>These practical habits keep context focused, make workflows reusable, and help you stay in control of the result.</p>
+      </div>
+      <div class="tips-grid reveal">
+        {% for tip in power_tips %}
+          <article class="tip-card tone-{{ loop.cycle('blue', 'green', 'amber', 'rose') }}" data-tilt-card>
+            <span class="tip-label">{{ tip.label }}</span>
+            <h3>{{ tip.title }}</h3>
+            <p>{{ tip.text }}</p>
+            <a href="{{ tip.url }}" target="_blank" rel="noreferrer" aria-label="Learn more about {{ tip.title }}">Explore <span aria-hidden="true">→</span></a>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+
     <section class="cost-section" id="costs">
-      <div class="section-index" aria-hidden="true">03 / SAVE MONEY</div>
+      <div class="section-index" aria-hidden="true">04 / SAVE MONEY</div>
       <div class="cost-intro reveal">
         <div>
           <p class="eyebrow">Spend smarter with Copilot</p>
-          <h2>Six ways to get more value<br>from every AI credit.</h2>
+          <h2>Seven ways to get more value<br>from every AI credit.</h2>
         </div>
         <div class="cost-summary">
           <span class="cost-summary-icon" aria-hidden="true">↘</span>
@@ -228,7 +250,7 @@
     </section>
 
     <section class="updates-section" id="updates">
-      <div class="section-index" aria-hidden="true">04 / WHAT'S NEW</div>
+      <div class="section-index" aria-hidden="true">05 / WHAT'S NEW</div>
       <div class="updates-orbit" aria-hidden="true"><span>✦</span><i></i><b></b></div>
       <div class="section-heading reveal">
         <div>
