@@ -122,6 +122,51 @@ BEST_PRACTICES = (
     },
 )
 
+COST_PRACTICES = (
+    {
+        "number": "01",
+        "title": "Use automatic model selection",
+        "text": "Let Copilot route routine work to an efficient model instead of manually choosing a costly reasoning model for every task.",
+        "saving": "Lower model cost",
+        "url": "https://docs.github.com/en/copilot/tutorials/optimize-ai-usage",
+    },
+    {
+        "number": "02",
+        "title": "Match the model to the task",
+        "text": "Use lighter models for explanations, small edits, and boilerplate. Reserve advanced reasoning models for genuinely complex problems.",
+        "saving": "Fewer AI credits",
+        "url": "https://docs.github.com/en/copilot/tutorials/optimize-ai-usage",
+    },
+    {
+        "number": "03",
+        "title": "Keep prompts and context focused",
+        "text": "Share only relevant files, requirements, and examples. Smaller context reduces token usage and helps Copilot reach the answer faster.",
+        "saving": "Less token usage",
+        "url": "https://docs.github.com/en/copilot/tutorials/optimize-ai-usage",
+    },
+    {
+        "number": "04",
+        "title": "Prefer included coding assistance",
+        "text": "Use code completions and next edit suggestions for everyday coding when they fit; these features do not consume GitHub AI Credits.",
+        "saving": "Included usage",
+        "url": "https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/",
+    },
+    {
+        "number": "05",
+        "title": "Set budgets before overages",
+        "text": "Create enterprise, organization, cost-center, and user budgets so extra usage cannot become an unexpected bill.",
+        "saving": "Predictable spend",
+        "url": "https://docs.github.com/en/copilot/concepts/billing/budgets-for-usage-based-billing",
+    },
+    {
+        "number": "06",
+        "title": "Review usage and licenses monthly",
+        "text": "Track usage by user and feature, investigate unusual consumption, and reassign seats that are inactive or delivering little value.",
+        "saving": "Remove waste",
+        "url": "https://docs.github.com/en/copilot/how-tos/manage-and-track-spending/manage-company-spending",
+    },
+)
+
 _cache_lock = threading.Lock()
 _cache = {"items": [], "updated_at": None, "expires_at": 0.0, "errors": []}
 CACHE_SECONDS = 15 * 60
@@ -242,6 +287,7 @@ def index():
         "index.html",
         features=FEATURES,
         best_practices=BEST_PRACTICES,
+        cost_practices=COST_PRACTICES,
         updates_endpoint="/api/updates",
     )
 

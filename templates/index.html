@@ -43,6 +43,7 @@
     <nav class="nav-links" aria-label="Main navigation">
       <a href="#features" data-nav-section="features">Features</a>
       <a href="#practices" data-nav-section="practices">Best practices</a>
+      <a href="#costs" data-nav-section="costs">Save money</a>
       <a href="#updates" data-nav-section="updates">Updates</a>
       <a class="nav-cta" href="https://docs.github.com/en/copilot" target="_blank" rel="noreferrer">Official docs <span aria-hidden="true">↗</span></a>
     </nav>
@@ -198,8 +199,36 @@
       </div>
     </section>
 
+    <section class="cost-section" id="costs">
+      <div class="section-index" aria-hidden="true">03 / SAVE MONEY</div>
+      <div class="cost-intro reveal">
+        <div>
+          <p class="eyebrow">Spend smarter with Copilot</p>
+          <h2>Six ways to get more value<br>from every AI credit.</h2>
+        </div>
+        <div class="cost-summary">
+          <span class="cost-summary-icon" aria-hidden="true">↘</span>
+          <p><strong>Simple principle:</strong> use the least expensive capability that can complete the task well, then measure the result.</p>
+        </div>
+      </div>
+      <div class="cost-grid reveal">
+        {% for practice in cost_practices %}
+          <article class="cost-card tone-{{ loop.cycle('green', 'blue', 'amber', 'rose') }}" data-tilt-card>
+            <div class="cost-card-top">
+              <span>{{ practice.number }}</span>
+              <strong>{{ practice.saving }}</strong>
+            </div>
+            <h3>{{ practice.title }}</h3>
+            <p>{{ practice.text }}</p>
+            <a href="{{ practice.url }}" target="_blank" rel="noreferrer" aria-label="Read official guidance for {{ practice.title }}">Official guidance <span aria-hidden="true">↗</span></a>
+          </article>
+        {% endfor %}
+      </div>
+      <p class="cost-note reveal">Cost behavior depends on your Copilot plan, enabled features, models, and organization settings. Review current GitHub billing documentation before making purchasing decisions.</p>
+    </section>
+
     <section class="updates-section" id="updates">
-      <div class="section-index" aria-hidden="true">03 / WHAT'S NEW</div>
+      <div class="section-index" aria-hidden="true">04 / WHAT'S NEW</div>
       <div class="updates-orbit" aria-hidden="true"><span>✦</span><i></i><b></b></div>
       <div class="section-heading reveal">
         <div>

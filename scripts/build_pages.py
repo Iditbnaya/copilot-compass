@@ -11,15 +11,13 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "_site"
 sys.path.insert(0, str(ROOT))
 
-from app import BEST_PRACTICES, FEATURES, app, get_updates
+from app import BEST_PRACTICES, COST_PRACTICES, FEATURES, app, get_updates
 
 
 def build() -> None:
-    if OUTPUT.exists():
-        shutil.rmtree(OUTPUT)
-    OUTPUT.mkdir()
+    OUTPUT.mkdir(exist_ok=True)
 
-    shutil.copytree(ROOT / "static", OUTPUT / "static")
+    shutil.copytree(ROOT / "static", OUTPUT / "static", dirs_exist_ok=True)
 
     updates = get_updates(force=True)
     payload = {
@@ -38,6 +36,7 @@ def build() -> None:
             "index.html",
             features=FEATURES,
             best_practices=BEST_PRACTICES,
+            cost_practices=COST_PRACTICES,
             updates_endpoint="updates.json",
         )
     (OUTPUT / "index.html").write_text(page, encoding="utf-8")
